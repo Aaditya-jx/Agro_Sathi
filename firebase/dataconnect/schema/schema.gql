@@ -1,0 +1,50 @@
+type User @table {
+  displayName: String!
+  createdAt: Timestamp!
+  email: String
+  farmName: String
+  photoUrl: String
+  location: String
+}
+
+type FarmField @table {
+  user: User!
+  name: String!
+  sizeAcres: Float!
+  createdAt: Timestamp!
+  notes: String
+  cropType: String
+}
+
+type CropCycle @table {
+  farmField: FarmField!
+  cropType: String!
+  plantingDate: Date!
+  expectedHarvestDate: Date!
+  createdAt: Timestamp!
+  actualHarvestDate: Date
+  yield: Float
+  treatmentsApplied: String
+}
+
+type Livestock @table {
+  user: User!
+  animalType: String!
+  identifier: String!
+  birthDate: Date!
+  createdAt: Timestamp!
+  breed: String
+  gender: String
+  healthStatus: String
+  productionNotes: String
+}
+
+type Task @table {
+  user: User!
+  description: String!
+  dueDate: Date!
+  createdAt: Timestamp!
+  status: String
+  assignedTo: User
+  relatedTo: String
+}
